@@ -13,24 +13,10 @@ public:
         for (char c : str) {
             if (c == '(' || c == '{' || c == '[') {
                 s.push(c);
-            } else if (c == ')') {
-                if (s.top() == '(') {
+            } else if ((c == ')' && s.top() == '(') || 
+                (c == '}' && s.top() == '{') || 
+                (c == ']' && s.top() == '[')) {
                     s.pop();
-                } else {
-                    return false;
-                }
-            } else if (c == '}') {
-                if (s.top() == '{') {
-                    s.pop();
-                } else {
-                    return false;
-                }
-            } else if (c == ']') {
-                if (s.top() == '[') {
-                    s.pop();
-                } else {
-                    return false;
-                }
             } else 
                 return false;
         }
