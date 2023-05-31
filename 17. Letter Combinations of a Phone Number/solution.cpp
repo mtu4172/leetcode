@@ -30,3 +30,29 @@ public:
         }
     }
 };
+class Solution2 {
+    vector<string> letters;
+    map<char, string> maps;
+public:
+    vector<string> letterCombinations(string digits) {
+        maps['2'] = "abc";
+        maps['3'] = "def";
+        maps['4'] = "ghi";
+        maps['5'] = "jkl";
+        maps['6'] = "mno";
+        maps['7'] = "pqrs";
+        maps['8'] = "tuv";
+        maps['9'] = "wxyz";
+        traverse(digits, "");
+        return letters;
+    }
+    void traverse(string digits, string cur) {
+        if (digits.size() == 0 && cur.size() != 0) {
+            letters.push_back(cur);
+            return;
+        }
+        for (char iter : maps[digits[0]]) {
+            traverse(digits.substr(1), cur + iter);
+        }
+    }
+};
