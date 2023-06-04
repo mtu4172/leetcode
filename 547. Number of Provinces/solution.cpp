@@ -29,3 +29,28 @@ public:
         return p;
     }
 };
+
+class Solution {
+public:
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        int n = isConnected.size();
+        int p = 0;
+        vector<bool> visited(n, false);
+        for (int i = 0; i < n; i++) {
+            if (visited[i])
+                continue;
+            visited[i] = true;
+            traverse(isConnected, visited, i);
+            p++;
+        }
+        return p;
+    }
+    void traverse (vector<vector<int>>& ic, vector<bool>& visited, int c) {
+        for (int i = 0; i < ic[c].size(); i++) {
+            if (ic[c][i] == 1 && !visited[i]) {
+                visited[i] = true;
+                traverse(ic, visited, i);
+            }
+        }
+    }
+};
