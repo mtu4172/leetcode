@@ -3,7 +3,7 @@
 #include <vector>
 #include <queue>
 using namespace std;
-class Solution {
+class SolutionBFS {
 public:
     int findCircleNum(vector<vector<int>>& isConnected) {
         int n = isConnected.size();
@@ -30,7 +30,7 @@ public:
     }
 };
 
-class Solution {
+class SolutionDFS {
 public:
     int findCircleNum(vector<vector<int>>& isConnected) {
         int n = isConnected.size();
