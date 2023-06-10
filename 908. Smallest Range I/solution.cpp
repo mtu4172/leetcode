@@ -12,8 +12,8 @@ public:
             mini = min(iter, mini);
             maxi = max(iter, maxi);
         }
-        if (maxi - k - mini - k <= 0)
+        if (maxi - mini - 2 * k <= 0)
             return 0;
-        return abs((maxi - k) - (mini + k));
+        return maxi - mini - 2 * k;
     }
 };
