@@ -2,7 +2,7 @@
 
 #include <vector>
 using namespace std;
-class Solution {
+class Solution1 {
 public:
     int peakIndexInMountainArray(vector<int>& arr) {
         int peakInd = -1;
@@ -14,5 +14,25 @@ public:
             }
         }
         return peakInd;
+    }
+};
+
+class Solution2 {
+public:
+    int peakIndexInMountainArray(vector<int>& arr) {
+        int l = 0;
+        int r = arr.size()-1;
+        while (l < r) {
+            int m = (l + r) / 2;
+            if (m == 0 || m == arr.size()-1)
+                return m;
+            if (arr[m-1] < arr[m] && arr[m+1] < arr[m])
+                return m;
+            if (arr[m-1] > arr[m])
+                r = m;
+            else if (arr[m+1] > arr[m])
+                l = m;
+        }
+        return -1;
     }
 };
